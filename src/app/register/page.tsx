@@ -1,7 +1,7 @@
 import Link from "next/link"
-import { LoginForm } from "@/components/login-form"
+import { RegisterForm } from "@/components/register-form"
 
-export default function Home() {
+export default function Register() {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-green-50 to-green-100">
       <header className="w-full py-6 px-4 sm:px-6 lg:px-8 flex justify-center border-b border-green-200">
@@ -30,15 +30,15 @@ export default function Home() {
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
             <div className="p-6 sm:p-8">
               <div className="text-center mb-8">
-                <h1 className="text-2xl font-bold text-gray-900">Welcome Back</h1>
-                <p className="text-sm text-gray-600 mt-2">Sign in to access your plant disease detection dashboard</p>
+                <h1 className="text-2xl font-bold text-gray-900">Create an Account</h1>
+                <p className="text-sm text-gray-600 mt-2">Join PlantHealth to identify and treat plant diseases</p>
               </div>
-              <LoginForm />
+              <RegisterForm />
               <div className="mt-6 text-center text-sm">
                 <p className="text-gray-600">
-                  Don't have an account?{" "}
-                  <Link href="/register" className="text-green-600 hover:text-green-700 font-medium">
-                    Sign up
+                  Already have an account?{" "}
+                  <Link href="/" className="text-green-600 hover:text-green-700 font-medium">
+                    Sign in
                   </Link>
                 </p>
               </div>
