@@ -1,7 +1,7 @@
-import Link from "next/link";
-import { LoginForm } from "@/components/login-form";
+import Link from "next/link"
+import { ForgotPasswordForm } from "@/components/forgot-password-form"
 
-export default function Home() {
+export default function ForgotPassword() {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-green-50 to-green-100">
       <header className="w-full py-6 px-4 sm:px-6 lg:px-8 flex justify-center border-b border-green-200">
@@ -30,22 +30,17 @@ export default function Home() {
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
             <div className="p-6 sm:p-8">
               <div className="text-center mb-8">
-                <h1 className="text-2xl font-bold text-gray-900">
-                  Welcome Back
-                </h1>
+                <h1 className="text-2xl font-bold text-gray-900">Reset Password</h1>
                 <p className="text-sm text-gray-600 mt-2">
-                  Sign in to access your plant disease detection dashboard
+                  Enter your email and we'll send you a link to reset your password
                 </p>
               </div>
-              <LoginForm />
+              <ForgotPasswordForm />
               <div className="mt-6 text-center text-sm">
                 <p className="text-gray-600">
-                  Don't have an account?{" "}
-                  <Link
-                    href="/register"
-                    className="text-green-600 hover:text-green-700 font-medium"
-                  >
-                    Sign up
+                  Remember your password?{" "}
+                  <Link href="/" className="text-green-600 hover:text-green-700 font-medium">
+                    Back to login
                   </Link>
                 </p>
               </div>
@@ -60,5 +55,6 @@ export default function Home() {
         </div>
       </footer>
     </div>
-  );
+  )
 }
+
