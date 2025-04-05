@@ -2,7 +2,7 @@
 import React from "react";
 import Sidebar from "@/app/components/sidebar";
 import Image from "next/image";
-import Plant from "@/app/assets/hero-img.webp";
+import Plant from "@/app/assets/hero-img.jpeg";
 
 const Page = () => {
   return (
@@ -13,7 +13,7 @@ const Page = () => {
           flex: 1,
           marginLeft: "80px",
           overflowY: "auto",
-          paddingBottom: "20px", // Added padding to avoid the last part being cut off
+          paddingBottom: "20px",
         }}
       >
         <div className="w-full flex flex-col h-full px-4 justify-center">
