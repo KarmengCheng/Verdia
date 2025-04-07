@@ -2,30 +2,22 @@
 import React from "react";
 import Sidebar from "@/app/components/sidebar";
 import { ImageUploader } from "@/app/components/image-uploader";
+import ChatWidget from "../components/chat";
 
 const Page = () => {
   return (
-    <div style={{ display: "flex", height: "100vh" }}>
+    <div className="flex h-screen bg-[#0A0A0A] text-white overflow-hidden">
       <Sidebar />
-      <div
-        style={{
-          flex: 1,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "20px",
-          marginLeft: "80px",
-          overflowY: "auto",
-        }}
-      >
-        <div style={{ width: "100%", maxWidth: "600px" }}>
-          <h2 className="text-xl font-semibold text-gray-700">
+      <ChatWidget />
+      <div className="ml-20 overflow-y-auto px-5 py-8  items-center justify-center">
+        <div className="max-w-3xl w-full">
+          <h2 className="text-2xl font-semibold text-white mb-2">
             Upload Your Image
           </h2>
-          <div className="text-sm text-gray-500 mb-4">
-            Please upload an image of your plant for diagnostics.
-          </div>
+          <p className="text-sm text-gray-400 mb-6">
+            Get an analysis of your plant and its disease by uploading a clear
+            picture of it.
+          </p>
           <ImageUploader />
         </div>
       </div>
