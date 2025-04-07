@@ -1,7 +1,5 @@
-// src/app/lib/firebase.ts
-import { initializeApp, getApps, getApp } from "firebase/app";
-import { getAuth } from "firebase/auth"; // ✅ Add this
-// import { getAnalytics } from "firebase/analytics"; // optional if not used
+import { initializeApp } from "firebase/app";
+import { getAnalytics, isSupported } from "firebase/analytics";
 
 const firebaseConfig = {
   apiKey: "AIzaSyA0nMQsP62eLdzOHOAGe86tIvhLNsjEj0c",
@@ -13,11 +11,14 @@ const firebaseConfig = {
   measurementId: "G-DPE2LFZQ3Z",
 };
 
-// Prevent re-initialization in dev (Next.js fast refresh)
-const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
-// Export the auth instance for use in other files
-export const auth = getAuth(app); // ✅ THIS is what you use in auth.ts
+// ✅ Only call getAnalytics if running in the browser
+if (typeof window !== "undefined") {
+  isSupported().then((supported) => {
+    if (supported) getAnalytics(app);
+  });
+}
 
-// Optional: only if you're using analytics
-// const analytics = getAnalytics(app);
+// Export for use in auth.ts
+export { app };

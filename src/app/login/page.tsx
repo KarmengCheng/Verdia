@@ -1,27 +1,27 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import { signIn } from "@/app/lib/auth";
+import Image from "next/image";
 import Logo from "@/app/assets/leaflens.svg";
 import Hero from "@/app/assets/hero-img.jpeg";
-import Image from "next/image";
-import { signUp } from "@/app/lib/auth"; // ✅ Firebase auth function
-import { useRouter } from "next/navigation";
 
-const Page = () => {
+const LoginPage = () => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const router = useRouter();
 
-  const handleSignUp = async (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
     try {
-      await signUp(email, password);
-      router.push("/dashboard"); // ✅ Redirect on success
+      await signIn(email, password);
+      router.push("/dashboard");
     } catch (err: any) {
-      setError(err.message || "Something went wrong");
+      setError(err.message || "Login failed");
     }
   };
 
@@ -36,24 +36,17 @@ const Page = () => {
       <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50 z-10"></div>
       <div className="w-[70%] items-center justify-center flex flex-col relative z-20">
         <div className="text-sm text-white/80 font-bold">
-          The Smarter Way To Grow
+          Welcome Back to Verdia AI
         </div>
         <div className="flex items-center mt-4">
           <Image src={Logo} alt="Verdia AI Logo" className="w-12 h-10 mr-2" />
           <div className="text-4xl font-black">Verdia AI</div>
         </div>
-        <div className="text-sm text-center mt-4 font-bold text-white/80">
-          Healthy plants start with early detection. Grow smarter with Verdia
-          AI for happy harvests.
-        </div>
-
         <form
+          onSubmit={handleLogin}
           className="mt-6 bg-black/40 backdrop-blur-3xl p-8 rounded-lg shadow-md w-full"
-          onSubmit={handleSignUp}
         >
-          <div className="text-lg text-white font-bold mb-4">
-            Create an Account
-          </div>
+          <div className="text-lg text-white font-bold mb-4">Login</div>
 
           <label
             htmlFor="email"
@@ -93,20 +86,12 @@ const Page = () => {
             type="submit"
             className="mt-4 w-full bg-[#14c984] text-white py-2 rounded-md hover:bg-green-700 cursor-pointer transition duration-200 ease-in-out"
           >
-            Sign Up
+            Log In
           </button>
-
-          <div className="text-sm text-gray-400 font-bold mt-4 text-center">
-  Already have an account?
-  <a href="/login" className="text-[#14c984] hover:underline ml-1">
-    Log In Here
-  </a>
-</div>
-
         </form>
       </div>
     </div>
   );
 };
 
-export default Page;
+export default LoginPage;
