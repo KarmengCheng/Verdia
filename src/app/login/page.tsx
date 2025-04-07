@@ -26,7 +26,8 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-black text-white w-full">
+    <div className="relative flex items-center justify-center h-screen bg-black text-white w-full">
+      {/* Background Image */}
       <Image
         src={Hero}
         alt="Hero Image"
@@ -34,20 +35,29 @@ const LoginPage = () => {
         priority
       />
       <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50 z-10"></div>
-      <div className="w-[70%] items-center justify-center flex flex-col relative z-20">
+
+      {/* Login Content */}
+      <div className="relative z-20 w-[70%] items-center justify-center flex flex-col">
         <div className="text-sm text-white/80 font-bold">
-          Welcome Back to Verdia AI
+          Welcome Back to Verdia
         </div>
         <div className="flex items-center mt-4">
           <Image src={Logo} alt="Verdia AI Logo" className="w-12 h-10 mr-2" />
-          <div className="text-4xl font-black">Verdia AI</div>
+          <div className="text-4xl font-black">Verdia</div>
         </div>
+        <div className="text-sm text-center mt-4 font-bold text-white/80">
+          Healthy plants start with early detection. Grow smarter with Verdia
+          AI for happy harvests.
+        </div>
+
+        {/* Login Form */}
         <form
           onSubmit={handleLogin}
-          className="mt-6 bg-black/40 backdrop-blur-3xl p-8 rounded-lg shadow-md w-full"
+          className="mt-6 bg-black/40 backdrop-blur-3xl p-8 rounded-lg shadow-md w-full max-w-md mx-auto"
         >
           <div className="text-lg text-white font-bold mb-4">Login</div>
 
+          {/* Email Input */}
           <label
             htmlFor="email"
             className="block text-gray-400 text-sm font-medium mb-2"
@@ -63,6 +73,7 @@ const LoginPage = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
 
+          {/* Password Input */}
           <label
             htmlFor="password"
             className="block text-gray-400 text-sm font-medium mt-4 mb-2"
@@ -78,10 +89,12 @@ const LoginPage = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
 
+          {/* Error Message */}
           {error && (
             <div className="text-red-500 text-sm font-bold mt-3">{error}</div>
           )}
 
+          {/* Submit Button */}
           <button
             type="submit"
             className="mt-4 w-full bg-[#14c984] text-white py-2 rounded-md hover:bg-green-700 cursor-pointer transition duration-200 ease-in-out"
