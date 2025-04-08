@@ -9,13 +9,11 @@ import {
   CardContent,
   CardFooter,
 } from "../components/ui/card";
-import ChatWidget from "../components/chat";
 
 const Page = () => {
   return (
     <div className="flex h-screen bg-[#0A0A0A] text-white overflow-hidden">
       <Sidebar />
-      <ChatWidget />
       <div className="ml-20 overflow-y-auto px-2 py-8 items-center justify-center">
         <div className="w-full flex flex-col h-full px-4 justify-center">
           <div className="text-2xl font-bold">Past Diagnoses</div>

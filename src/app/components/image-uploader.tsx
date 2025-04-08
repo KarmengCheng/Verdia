@@ -17,7 +17,6 @@ import {
   Leaf,
 } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/app/components/ui/card";
-import { Badge } from "@/app/components/ui/badge";
 
 const steps = [
   {
@@ -52,6 +51,7 @@ interface Prediction {
   bbox: number[];
   description: string;
   care: string;
+  severity: string;
 }
 
 interface PredictionResponse {
@@ -556,7 +556,7 @@ export function ImageUploader() {
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <h3 className="text-lg font-semibold">
+                        <h3 className="text-xl font-semibold">
                           {predictions[0].name}
                         </h3>
 
@@ -575,7 +575,26 @@ export function ImageUploader() {
                         </div>
                       )}
                     </div>
-
+                    <div className="space-y-4 pt-2">
+                      <div className="flex items-center gap-2">
+                        <h4 className="text-sm font-medium flex items-center gap-1">
+                          <div className="flex flex-row gap-2 items-center font-bold text-lg text-white">
+                            Severity:
+                          </div>
+                        </h4>
+                        <div
+                          className={`px-3 py-1 rounded-xl text-white font-bold ${
+                            predictions[0].severity === "Low"
+                              ? "bg-green-500"
+                              : predictions[0].severity === "Moderate"
+                              ? "bg-orange-500"
+                              : "bg-red-500"
+                          }`}
+                        >
+                          {predictions[0].severity}
+                        </div>
+                      </div>
+                    </div>
                     <div className="space-y-4 pt-2">
                       <div className="p-4 bg-gray-200 rounded-lg">
                         <h4 className="text-sm font-medium flex items-center gap-1 mb-2">
@@ -603,7 +622,7 @@ export function ImageUploader() {
                     </div>
                   </div>
 
-                  <div className="flex items-center mt-4 bg-[#2A2A2A] rounded-lg p-2">
+                  <div className="flex items-center mt-4 bg-[#] rounded-lg p-2">
                     <input
                       type="text"
                       placeholder="Ask anything"

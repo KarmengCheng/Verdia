@@ -7,13 +7,11 @@ import Plant from "@/app/assets/hero-img.jpeg";
 import Guide1 from "@/app/assets/guide-1.webp";
 import Guide2 from "@/app/assets/guide-2.jpg";
 import Guide3 from "@/app/assets/guide-3.jpg";
-import ChatWidget from "../components/chat";
 
 const Page = () => {
   return (
     <div style={{ display: "flex", minHeight: "100vh", overflow: "hidden" }}>
       <Sidebar />
-      <ChatWidget />
       <div
         style={{
           flex: 1,

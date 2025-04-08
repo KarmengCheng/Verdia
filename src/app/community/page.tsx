@@ -14,13 +14,11 @@ import Avatar2 from "@/app/assets/panda.png";
 import Avatar3 from "@/app/assets/rabbit.png";
 import Post1 from "@/app/assets/post1.jpg";
 import Post2 from "@/app/assets/post2.webp";
-import ChatWidget from "../components/chat";
 
 const Page = () => {
   return (
     <div className="flex bg-[#0A0A0A] text-white">
       <Sidebar />
-      <ChatWidget />
       <div className="ml-20 px-5 py-8 items-center justify-center w-full">
         <div className="w-full flex flex-col h-full px-4 justify-center">
           <div className="w-full items-end justify-end flex mb-4">

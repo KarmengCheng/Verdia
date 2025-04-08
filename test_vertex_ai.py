@@ -72,7 +72,12 @@ def enrich_with_gemini(disease_name: str):
         response_care = gemini_model.generate_content(prompt_care)
         care = response_care.text.strip()
 
-        return description, care
+        # Severity
+        prompt_severity = f"How severe is the plant disease '{disease_name}'? When you provide me the answer, please only write Low, Moderate or High."
+        response_severity = gemini_model.generate_content(prompt_severity)
+        severity = response_severity.text.strip()
+
+        return description, care, severity
     except Exception as e:
         logging.error(f"Gemini error for '{disease_name}': {e}")
         return "Error retrieving description.", "Error retrieving care instructions."
@@ -104,7 +109,7 @@ def predict():
         disease_name = top_prediction["name"]
 
         # Step 3: Single Gemini call for the top prediction
-        description, care = enrich_with_gemini(disease_name)
+        description, care, severity = enrich_with_gemini(disease_name)
 
         # Step 4: Attach Gemini results to all predictions
         enriched_predictions = []
@@ -114,7 +119,8 @@ def predict():
                 "confidence": round(float(pred["confidence"]) * 100, 2),
                 "bbox": list(pred["bbox"]),
                 "description": description,
-                "care": care
+                "care": care,
+                "severity": severity
             })
 
         return jsonify({"predictions": enriched_predictions})
