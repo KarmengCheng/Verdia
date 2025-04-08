@@ -7,6 +7,7 @@ import {
   Camera,
   LayoutDashboard,
   FileText,
+  MessageCircleQuestion,
   LogOut,
   CalendarCheck2,
   Users,
@@ -40,6 +41,11 @@ const Sidebar = () => {
       label: "Community",
       icon: <Users size={20} />,
       path: "/community",
+    },
+    {
+      label: "Chat",
+      icon: <MessageCircleQuestion size={20} />,
+      path: "/chat",
     },
   ];
 

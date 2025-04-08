@@ -8,6 +8,7 @@ import {
 } from "react";
 import {
   Upload,
+  Send,
   X,
   Info,
   AlertCircle,
@@ -540,7 +541,7 @@ export function ImageUploader() {
               </div>
             </form>
             {error && (
-              <div className="p-4 bg-red-400 rounded-lg flex items-start gap-2">
+              <div className="p-4 bg-red-400  items-center rounded-lg flex gap-2">
                 <AlertCircle className="h-5 w-5 text-white mt-0.5 flex-shrink-0" />
                 <p className="text-white font-bold text-sm">{error}</p>
               </div>
@@ -600,6 +601,17 @@ export function ImageUploader() {
                         </div>
                       </div>
                     </div>
+                  </div>
+
+                  <div className="flex items-center mt-4 bg-[#2A2A2A] rounded-lg p-2">
+                    <input
+                      type="text"
+                      placeholder="Ask anything"
+                      className="flex-1 p-2 bg-transparent text-white placeholder-gray-400 outline-none px-2"
+                    />
+                    <button className="ml-2 p-2 cursor-pointer flex items-center justify-center bg-[#10b676] rounded-full hover:bg-[#14C984]">
+                      <Send size={20} />
+                    </button>
                   </div>
                 </CardContent>
               </Card>

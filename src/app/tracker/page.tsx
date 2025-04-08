@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import Sidebar from "@/app/components/sidebar";
-import ChatWidget from "../components/chat";
 import CalendarLogo from "@/app/assets/google-calendar-svgrepo-com.svg";
 import Image from "next/image";
 import DatePicker from "react-datepicker";
@@ -13,7 +12,6 @@ const Page = () => {
   return (
     <div className="flex h-screen bg-[#0A0A0A] text-white overflow-hidden">
       <Sidebar />
-      <ChatWidget />
 
       <div className="ml-20 flex flex-col flex-1 overflow-y-auto p-6 md:p-8">
         <div className="flex justify-end items-center mb-6">

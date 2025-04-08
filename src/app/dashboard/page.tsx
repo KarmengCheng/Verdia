@@ -10,12 +10,10 @@ import {
   CardHeader,
   CardTitle,
 } from "../components/ui/card";
-import ChatWidget from "../components/chat";
 const Page = () => {
   return (
     <div className="flex h-screen overflow-hidden bg-[#0A0A0A] text-white">
       <Sidebar />
-      <ChatWidget />
       <div className="flex-1 flex-col ml-20 flex justify-center px-5">
         <div className="flex items-center justify-between text-2xl font-bold gap-2 text-white">
           <div>
